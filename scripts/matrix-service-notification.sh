@@ -1,12 +1,10 @@
 #!/bin/bash
 # Based on original E-Mail Icinga2 notification
 
-PROG="`basename $0`"
-ICINGA2HOST="`hostname`"
 CURLBIN="curl"
-MX_TXN="`date "+%s"`$(( RANDOM % 9999 ))"
+MX_TXN="$(date "+%s")$(( RANDOM % 9999 ))"
 
-if [ -z "`which $CURLBIN`" ] ; then
+if [ -z "$(which $CURLBIN)" ] ; then
   echo "$CURLBIN not found in \$PATH. Consider installing it."
   exit 1
 fi
@@ -50,7 +48,7 @@ Help() {
 
 Error() {
   if [ "$1" ]; then
-    echo $1
+    echo "$1"
   fi
   Usage;
   exit 1;
@@ -149,9 +147,9 @@ if [ -n "$ICINGAWEB2URL" ] ; then
   NOTIFICATION_MESSAGE="$NOTIFICATION_MESSAGE $ICINGAWEB2URL/icingadb/service?host.name=$HOSTNAME&name=$SERVICENAME <br/>"
 fi
 
-while read line; do
+while read -r line; do
   message="${message}\n${line}"
-done <<< $NOTIFICATION_MESSAGE
+done <<< "$NOTIFICATION_MESSAGE"
 
 BODY="${message}"
 
