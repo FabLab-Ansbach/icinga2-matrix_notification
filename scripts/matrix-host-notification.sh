@@ -141,7 +141,7 @@ fi
 
 ## Check whether Icinga Web 2 URL was specified.
 if [ -n "$ICINGAWEB2URL" ] ; then
-  NOTIFICATION_MESSAGE="$NOTIFICATION_MESSAGE $ICINGAWEB2URL/monitoring/host/show?host=$HOSTNAME <br/>"
+  NOTIFICATION_MESSAGE="$NOTIFICATION_MESSAGE $ICINGAWEB2URL/icingadb/host?name=$HOSTNAME <br/>"
 fi
 
 while read line; do

@@ -146,7 +146,7 @@ fi
 if [ -n "$ICINGAWEB2URL" ] ; then
   # Replace space with HTML
   SERVICENAME=${SERVICENAME// /%20}
-  NOTIFICATION_MESSAGE="$NOTIFICATION_MESSAGE $ICINGAWEB2URL/monitoring/service/show?host=$HOSTNAME&service=$SERVICENAME <br/>"
+  NOTIFICATION_MESSAGE="$NOTIFICATION_MESSAGE $ICINGAWEB2URL/icingadb/service?host.name=$HOSTNAME&name=$SERVICENAME <br/>"
 fi
 
 while read line; do
